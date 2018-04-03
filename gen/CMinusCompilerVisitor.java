@@ -1,5 +1,7 @@
 // Generated from /Users/jacklem1/IdeaProjects/CMinusCompiler/src/CMinusCompiler.g4 by ANTLR 4.7
+package com.ejacklin.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced

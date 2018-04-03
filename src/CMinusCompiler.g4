@@ -7,7 +7,7 @@ grammar CMinusCompiler;
 program             :  declaration_list;
 declaration_list    :  declaration_list  declaration  |  declaration;
 declaration         :  var_declaration  |  fun_declaration;
-type_specifier      :  'int';
+type_specifier      :  INT | VOID;
 var_declaration     :  type_specifier  ID SEMICOLON  |  type_specifier  ID LB NUM RB SEMICOLON;
 fun_declaration     :  type_specifier  ID  LPAREN  params  RPAREN  compound_stmt;
 params              :  param_list  |  VOID;
