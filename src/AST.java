@@ -2,11 +2,13 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class AST {
 
     private final Object payload;
+    private final static Hashtable symbolTable = new Hashtable<String, Token>();
 
     private final List<AST> children;
 
@@ -19,7 +21,6 @@ public class AST {
     }
 
     private AST(AST parent, ParseTree tree, List<AST> children) {
-
         this.payload = getPayload(tree);
         this.children = children;
 
@@ -34,6 +35,7 @@ public class AST {
     public Object getPayload() {
         return payload;
     }
+    public Hashtable getSymbolTable() {return symbolTable;}
 
     public List<AST> getChildren() {
         return new ArrayList<>(children);
@@ -65,6 +67,8 @@ public class AST {
 
                 if (!(temp.payload instanceof Token)) {
                     walk(tree.getChild(i), temp);
+                }else{
+                    symbolTable.put(temp.toString(),temp.payload);
                 }
             }
         }

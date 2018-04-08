@@ -4,17 +4,17 @@ grammar CMinusCompiler;
 /*
  * Parser Rules
 */
-program             :  declaration_list;
-declaration_list    :  declaration_list  declaration  |  declaration;
+program             :  declaration_list EOF;
+declaration_list    :  declaration (declaration)*;
 declaration         :  var_declaration  |  fun_declaration;
-type_specifier      :  INT | VOID;
 var_declaration     :  type_specifier  ID SEMICOLON  |  type_specifier  ID LB NUM RB SEMICOLON;
+type_specifier      :  INT | VOID;
 fun_declaration     :  type_specifier  ID  LPAREN  params  RPAREN  compound_stmt;
 params              :  param_list  |  VOID;
-param_list          :  param_list  COMMA  param  |  param;
+param_list          :  param (COMMA param)*;
 param               :  type_specifier  ID  |  type_specifier  ID LB RB;
 compound_stmt       :  LCB  local_declarations  statement_list  RCB;
-local_declarations  :  local_declarations  var_declaration  |  ;
+local_declarations  :  (var_declaration)*;
 statement_list      :  statement_list  statement  |  ;
 statement           :  expression_stmt  |  compound_stmt  |  selection_stmt  |  iteration_stmt  |  return_stmt;
 expression_stmt     :  expression  SEMICOLON  |  SEMICOLON;
