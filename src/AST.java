@@ -24,6 +24,8 @@ public class AST {
         this.payload = getPayload(tree);
         this.children = children;
 
+
+
         if (parent == null) {
             walk(tree, this);
         }
@@ -32,9 +34,8 @@ public class AST {
         }
     }
 
-    public Object getPayload() {
-        return payload;
-    }
+
+    public Object getPayload() { return payload; }
     public Hashtable getSymbolTable() {return symbolTable;}
 
     public List<AST> getChildren() {
@@ -44,8 +45,9 @@ public class AST {
     private Object getPayload(ParseTree tree) {
         if (tree.getChildCount() == 0) {
             return tree.getPayload();
-        }
-        else {
+        }else if(tree.getChildCount() == 1) {
+            return getPayload(tree.getChild(0));
+        }else {
             String ruleName = tree.getClass().getSimpleName().replace("Context", "");
             return Character.toLowerCase(ruleName.charAt(0)) + ruleName.substring(1);
         }
@@ -67,8 +69,6 @@ public class AST {
 
                 if (!(temp.payload instanceof Token)) {
                     walk(tree.getChild(i), temp);
-                }else{
-                    symbolTable.put(temp.toString(),temp.payload);
                 }
             }
         }
@@ -109,11 +109,13 @@ public class AST {
                 String indent = "";
 
                 for (int i = 0; i < childListStack.size() - 1; i++) {
-                    indent += (childListStack.get(i).size() > 0) ? "|  " : "   ";
+//                    indent += (childListStack.get(i).size() > 0) ? "|  " : "   ";
+                    indent += (childListStack.get(i).size() > 0) ? "   " : "   ";
                 }
 
                 builder.append(indent)
-                        .append(childStack.isEmpty() ? "'- " : "|- ")
+                        .append(childStack.isEmpty() ? "   " : "   ")
+//                        .append(childStack.isEmpty() ? "'- " : "|- ")
                         .append(caption)
                         .append("\n");
 
