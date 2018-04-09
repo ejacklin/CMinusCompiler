@@ -1,5 +1,4 @@
 // Generated from /Users/jacklem1/IdeaProjects/CMinusCompiler/src/CMinusCompiler.g4 by ANTLR 4.7
-package com.ejacklin.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -38,16 +37,6 @@ public interface CMinusCompilerListener extends ParseTreeListener {
 	 */
 	void exitDeclaration(CMinusCompilerParser.DeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CMinusCompilerParser#type_specifier}.
-	 * @param ctx the parse tree
-	 */
-	void enterType_specifier(CMinusCompilerParser.Type_specifierContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CMinusCompilerParser#type_specifier}.
-	 * @param ctx the parse tree
-	 */
-	void exitType_specifier(CMinusCompilerParser.Type_specifierContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link CMinusCompilerParser#var_declaration}.
 	 * @param ctx the parse tree
 	 */
@@ -57,6 +46,16 @@ public interface CMinusCompilerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVar_declaration(CMinusCompilerParser.Var_declarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CMinusCompilerParser#type_specifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterType_specifier(CMinusCompilerParser.Type_specifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CMinusCompilerParser#type_specifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitType_specifier(CMinusCompilerParser.Type_specifierContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CMinusCompilerParser#fun_declaration}.
 	 * @param ctx the parse tree

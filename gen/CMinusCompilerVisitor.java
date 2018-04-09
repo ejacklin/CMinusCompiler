@@ -1,7 +1,5 @@
 // Generated from /Users/jacklem1/IdeaProjects/CMinusCompiler/src/CMinusCompiler.g4 by ANTLR 4.7
-package com.ejacklin.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
-
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced
@@ -30,17 +28,17 @@ public interface CMinusCompilerVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDeclaration(CMinusCompilerParser.DeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CMinusCompilerParser#type_specifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitType_specifier(CMinusCompilerParser.Type_specifierContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link CMinusCompilerParser#var_declaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitVar_declaration(CMinusCompilerParser.Var_declarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CMinusCompilerParser#type_specifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitType_specifier(CMinusCompilerParser.Type_specifierContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CMinusCompilerParser#fun_declaration}.
 	 * @param ctx the parse tree

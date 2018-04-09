@@ -15,7 +15,7 @@ param_list          :  param (COMMA param)*;
 param               :  type_specifier  ID  |  type_specifier  ID LB RB;
 compound_stmt       :  LCB  local_declarations  statement_list  RCB;
 local_declarations  :  (var_declaration)*;
-statement_list      :  statement_list  statement  |  ;
+statement_list      :  (statement)*;
 statement           :  expression_stmt  |  compound_stmt  |  selection_stmt  |  iteration_stmt  |  return_stmt;
 expression_stmt     :  expression  SEMICOLON  |  SEMICOLON;
 selection_stmt      :  IF LPAREN  expression  RPAREN  statement  |  IF LPAREN  expression  RPAREN  statement  ELSE  statement;
@@ -25,14 +25,14 @@ expression          :  var  ASSIGN  expression  |  simple_expression;
 var                 :  ID  |  ID LB  expression  RB;
 simple_expression   :  additive_expression  relop  additive_expression  |  additive_expression;
 relop               :  LTE | LT | GT | GTE | EQ | NOTEQ;
-additive_expression :  additive_expression  addop  term  |  term;
+additive_expression :  term  (addop  term)*;
 addop               :  ADD | SUB;
-term                :  term  mulop  factor  |  factor;
+term                :  factor  (mulop  factor)*;
 mulop               :  MULT | DIV;
 factor              :  LPAREN  expression  RPAREN |  var  |  call  |  NUM;
 call                :  ID LPAREN  args  RPAREN;
 args                :  arg_list  |  ;
-arg_list            :  arg_list  COMMA  expression  |  expression;
+arg_list            :  expression (COMMA  expression)*;
 
 
 

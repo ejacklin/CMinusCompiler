@@ -1,5 +1,5 @@
 // Generated from /Users/jacklem1/IdeaProjects/CMinusCompiler/src/CMinusCompiler.g4 by ANTLR 4.7
-package com.ejacklin.antlr;
+
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -51,18 +51,6 @@ public class CMinusCompilerBaseListener implements CMinusCompilerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterType_specifier(CMinusCompilerParser.Type_specifierContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitType_specifier(CMinusCompilerParser.Type_specifierContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterVar_declaration(CMinusCompilerParser.Var_declarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -70,6 +58,18 @@ public class CMinusCompilerBaseListener implements CMinusCompilerListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVar_declaration(CMinusCompilerParser.Var_declarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterType_specifier(CMinusCompilerParser.Type_specifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitType_specifier(CMinusCompilerParser.Type_specifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

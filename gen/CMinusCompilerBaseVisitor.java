@@ -1,5 +1,4 @@
 // Generated from /Users/jacklem1/IdeaProjects/CMinusCompiler/src/CMinusCompiler.g4 by ANTLR 4.7
-package com.ejacklin.antlr;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -38,14 +37,14 @@ public class CMinusCompilerBaseVisitor<T> extends AbstractParseTreeVisitor<T> im
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitType_specifier(CMinusCompilerParser.Type_specifierContext ctx) { return visitChildren(ctx); }
+	@Override public T visitVar_declaration(CMinusCompilerParser.Var_declarationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVar_declaration(CMinusCompilerParser.Var_declarationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitType_specifier(CMinusCompilerParser.Type_specifierContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
