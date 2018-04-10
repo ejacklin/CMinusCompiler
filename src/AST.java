@@ -1,5 +1,8 @@
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.TerminalNode;
+import org.antlr.runtime.tree.*;
+import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -7,9 +10,9 @@ import java.util.List;
 
 public class AST {
 
-    private final Object payload;
+    private Object payload;
     private final static Hashtable symbolTable = new Hashtable<String, Token>();
-
+    TerminalNode terminalNode;
     private final List<AST> children;
 
     public AST(ParseTree tree) {
@@ -24,7 +27,12 @@ public class AST {
         this.payload = getPayload(tree);
         this.children = children;
 
-
+        if(!(this.payload instanceof String) && !this.payload.getClass().getSimpleName().contains("Context")){
+            Integer type = ((Token) this.payload).getType();
+            if((type == -1) || (type >= 17 && type <=28)){
+                return;
+            }
+        }
 
         if (parent == null) {
             walk(tree, this);
@@ -109,13 +117,11 @@ public class AST {
                 String indent = "";
 
                 for (int i = 0; i < childListStack.size() - 1; i++) {
-//                    indent += (childListStack.get(i).size() > 0) ? "|  " : "   ";
-                    indent += (childListStack.get(i).size() > 0) ? "   " : "   ";
+                    indent += "\t";
                 }
 
                 builder.append(indent)
-                        .append(childStack.isEmpty() ? "   " : "   ")
-//                        .append(childStack.isEmpty() ? "'- " : "|- ")
+                        .append("\t")
                         .append(caption)
                         .append("\n");
 

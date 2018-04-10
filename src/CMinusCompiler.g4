@@ -40,10 +40,16 @@ arg_list            :  expression (COMMA  expression)*;
 /*
  * Lexer Rules
 */
-WS : [ \r\t\n]+->skip; // skip spaces, tabs, newlines
-LCOMM : '/*';
-RCOMM : '*/';
-COMMENT : LCOMM .+? RCOMM -> skip;
+
+//Keywords
+IF: 'if';
+ELSE: 'else';
+WHILE: 'while';
+RETURN: 'return';
+INT: 'int';
+VOID: 'void';
+
+//Symbols
 LB: '[';
 RB: ']';
 LPAREN: '(';
@@ -63,15 +69,15 @@ ADD: '+';
 SUB: '-';
 MULT: '*';
 DIV: '/';
-IF: 'if';
-ELSE: 'else';
-WHILE: 'while';
-RETURN: 'return';
-INT: 'int';
-VOID: 'void';
 
-fragment DIGIT : [0-9];
-fragment LETTER : [A-Za-z];
-//NUM : (ADD|SUB)?DIGIT+ ([.,] DIGIT+)?;
+//Comments
+LCOMM : '/*';
+RCOMM : '*/';
+COMMENT : LCOMM .+? RCOMM -> skip;
+
+//REs
 NUM: DIGIT DIGIT*;
 ID : LETTER LETTER*;             // match lower_case identifiers
+fragment DIGIT : [0-9];
+fragment LETTER : [A-Za-z];
+WS : [ \r\t\n]+->skip; // skip spaces, tabs, newlines

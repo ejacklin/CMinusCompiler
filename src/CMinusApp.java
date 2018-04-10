@@ -9,8 +9,8 @@ public class CMinusApp {
     public static void main(String[] args) {
         CharStream inputStream = null;
         try {
-             inputStream = CharStreams.fromFileName("/Users/jacklem1/IdeaProjects/CMinusCompiler/src/C-Input-1.txt");
-//             inputStream = CharStreams.fromFileName("C:\\Users\\Erin\\IdeaProjects\\CMinusCompiler\\src\\C-Input-1.txt");
+//             inputStream = CharStreams.fromFileName("/Users/jacklem1/IdeaProjects/CMinusCompiler/src/C-Input-1.txt");
+             inputStream = CharStreams.fromFileName("C:\\Users\\Erin\\IdeaProjects\\CMinusCompiler\\src\\C-Input-1.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -22,10 +22,6 @@ public class CMinusApp {
         AST ast = new AST(parseTree);
 
         System.out.println(ast);
-//
-//        CMinusCompilerParser.F.FileContext fileContext = cMinusCompilerParser.file();file
-//        ASTVisitor visitor = new ASTVisitor();
-//        visitor.visit(fileContext);
     }
 
 }
