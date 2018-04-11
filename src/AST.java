@@ -20,7 +20,7 @@ public class AST {
     }
 
     private AST(AST ast, ParseTree tree) {
-        this(ast, tree, new ArrayList<AST>());
+        this(ast, tree, new ArrayList<>());
     }
 
     private AST(AST parent, ParseTree tree, List<AST> children) {
@@ -30,13 +30,15 @@ public class AST {
         if(!(this.payload instanceof String) && !this.payload.getClass().getSimpleName().contains("Context")){
             Token token = (Token) this.payload;
             Integer type = token.getType();
-            if((type == -1) || (type >= 17 && type < 28)){
+            if((type == -1) || (type < 13)){
                 return;
-            }else if(!(this.payload instanceof String) && this.payload.getClass().getSimpleName().contains("Context")){
-                if(tree.getChildCount() == 0)
-                    return;
             }
-        }
+        }else if(!(this.payload instanceof String) && this.payload.getClass().getSimpleName().contains("Context")){
+                if(tree.getChildCount() == 0) {
+                    return;
+                }
+            }
+
 
         if (parent == null) {
             walk(tree, this);
@@ -76,12 +78,12 @@ public class AST {
         else if (tree.getChildCount() > 1) {
 
             for (int i = 0; i < tree.getChildCount(); i++) {
-                if (!(tree.getChild(i) instanceof TerminalNode)) {
+//                if (!(tree.getChild(i) instanceof TerminalNodeImpl)) {    //attempt to remove EOF
                     AST temp = new AST(ast, tree.getChild(i));
                     if (!(temp.payload instanceof Token)) {
                         walk(tree.getChild(i), temp);
                     }
-                }
+//                }
             }
         }
     }
