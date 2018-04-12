@@ -5,11 +5,11 @@ import org.antlr.v4.runtime.tree.*;
 import java.io.IOException;
 
 public class CMinusApp {
-    static SymbolTable scopeTable = new SymbolTable();
+    static SymbolTable scopeSymbolTable = new SymbolTable();
 
     static void BuildSymbolTable(AST ast, SymbolTable symbolTable){
 
-         scopeTable = symbolTable;
+         SymbolTable scopeTable = symbolTable;
 
         if(ast.getPayload() instanceof String){
 
@@ -102,9 +102,9 @@ public class CMinusApp {
 
         System.out.println(ast);
 
-        BuildSymbolTable(ast,scopeTable);
+        BuildSymbolTable(ast,scopeSymbolTable);
 
-        System.out.println(scopeTable);
+        System.out.println(scopeSymbolTable);
 
 
     }
