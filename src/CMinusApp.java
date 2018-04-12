@@ -99,13 +99,13 @@ public class CMinusApp {
         ParseTree parseTree = cMinusCompilerParser.program();
 
         AST ast = new AST(parseTree);
-
         System.out.println(ast);
 
         BuildSymbolTable(ast,scopeSymbolTable);
-
         System.out.println(scopeSymbolTable);
 
+        SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer(scopeSymbolTable,ast);
+        semanticAnalyzer.CheckNodes(ast, scopeSymbolTable);
 
     }
 
