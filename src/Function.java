@@ -3,9 +3,9 @@
  */
 public class Function {
 
-    private String name;
-    private String type;
-    private SymbolTable symbolTable;
+    public String name;
+    public String type;
+    public SymbolTable symbolTable;
 
     public Function(String name, String type) {
         this.name = name;
@@ -13,5 +13,21 @@ public class Function {
         this.symbolTable = new SymbolTable();
     }
 
+    boolean exists(String key){
+        return symbolTable.Contains(key);
+    }
 
+    void insert(String key, Object object){
+        symbolTable.Add(key, object);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Function{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", symbolTable=" + symbolTable +
+                '}';
+    }
 }

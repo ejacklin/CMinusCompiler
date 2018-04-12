@@ -7,6 +7,19 @@ import java.util.Set;
 public class SymbolTable {
     private HashMap<String,Object> symbolTable;
 
+    @Override
+    public String toString() {
+        String outString = "";
+        for (String k : symbolTable.keySet()){
+            outString += k + ": " + symbolTable.get(k).toString() + "\n";
+        }
+        return outString;
+    }
+
+    public SymbolTable() {
+        this.symbolTable = new HashMap<>();
+    }
+
     public Set<String> GetKeys(){
         return symbolTable.keySet();
     }
@@ -17,7 +30,7 @@ public class SymbolTable {
         }
     }
 
-    public boolean IsInTable(String key){
+    public boolean Contains(String key){
         return symbolTable.containsKey(key);
     }
 

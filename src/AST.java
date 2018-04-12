@@ -4,6 +4,10 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import org.antlr.runtime.tree.*;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 
+/**
+ * Parse tree to AST code stolen from https://gist.github.com/bkiers/91827bdfa2b97679568c
+ */
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;

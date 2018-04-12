@@ -3,15 +3,26 @@
  */
 public class Variable {
 
-    private String name;
-    private Integer value;
-    private Boolean param;
-    private String type;
+    public String name;
+    public Integer value;
+    public Boolean param;
+    public String type;
 
-    public Variable(String name, Integer value, Boolean param, String type) {
+    public Variable(String name, String type, Integer value, Boolean param) {
         this.name = name;
         this.value = value;
         this.param = param;
+        this.type = type;
+    }
+
+    public Variable(String name, String type, Boolean param) {
+        this.name = name;
+        this.param = param;
+        this.type = type;
+    }
+
+    public Variable(String name, String type) {
+        this.name = name;
         this.type = type;
     }
 
