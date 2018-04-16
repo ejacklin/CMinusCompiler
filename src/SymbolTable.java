@@ -5,7 +5,7 @@ import java.util.Set;
  * Created by Erin on 4/9/2018.
  */
 public class SymbolTable {
-    private HashMap<String,Object> symbolTable;
+    public HashMap<String,Object> symbolTable;
 
     @Override
     public String toString() {

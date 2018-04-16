@@ -1,19 +1,29 @@
 import com.ejacklin.antlr.*;
+import org.antlr.runtime.tree.ParseTree;
 
 
 public class ASTVisitor extends CMinusCompilerBaseVisitor{
+
+    private ParseTree astTree = new ParseTree(null);
     @Override
     public Object visitProgram(CMinusCompilerParser.ProgramContext ctx) {
+       for(org.antlr.v4.runtime.tree.ParseTree child : ctx.children){
+           visit(child);
+       }
         return super.visitProgram(ctx);
     }
 
     @Override
     public Object visitDeclaration_list(CMinusCompilerParser.Declaration_listContext ctx) {
+        if(ctx.getChildCount() == 0){
+
+        }
         return super.visitDeclaration_list(ctx);
     }
 
     @Override
     public Object visitDeclaration(CMinusCompilerParser.DeclarationContext ctx) {
+
         return super.visitDeclaration(ctx);
     }
 
