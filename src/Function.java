@@ -4,12 +4,12 @@
 public class Function {
 
     public String name;
-    public String type;
+    public String returnType = null;
     public SymbolTable symbolTable;
 
-    public Function(String name, String type) {
+    public Function(String name, String returnType) {
         this.name = name;
-        this.type = type;
+        this.returnType = returnType;
         this.symbolTable = new SymbolTable();
     }
 
@@ -26,7 +26,7 @@ public class Function {
     public String toString() {
         return "Function{" +
                 "name='" + name + '\'' +
-                ", type='" + type + '\'' +
+                ", returnType='" + returnType + '\'' +
                 ", symbolTable=" + symbolTable +
                 '}';
     }

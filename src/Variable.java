@@ -38,7 +38,7 @@ public class Variable {
                 "name='" + name + '\'' +
                 ", value=" + value +
                 ", param=" + param +
-                ", type='" + type + '\'' +
+                ", returnType='" + type + '\'' +
                 '}';
     }
 }

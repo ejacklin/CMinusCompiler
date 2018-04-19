@@ -14,7 +14,7 @@ import java.util.List;
 
 public class AST {
 
-    private Object payload;
+    public Object payload;
     private final static Hashtable symbolTable = new Hashtable<String, Token>();
     TerminalNode terminalNode;
     private final List<AST> children;
@@ -117,7 +117,7 @@ public class AST {
 
                 if (ast.payload instanceof Token) {
                     Token token = (Token) ast.payload;
-                    caption = String.format("TOKEN[type: %s, text: %s]",
+                    caption = String.format("TOKEN[returnType: %s, text: %s]",
                             token.getType(), token.getText().replace("\n", "\\n"));
                 }
                 else {

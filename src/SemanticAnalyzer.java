@@ -27,12 +27,12 @@ public class SemanticAnalyzer {
                     //check that main exists
                     Set<String> keys = symbolTable.GetKeys();
                     if (!keys.contains("main")){
-                        throw new InvalidArgumentException(new String[]{"Main must be of type void"});
+                        throw new InvalidArgumentException(new String[]{"Main must be of returnType void"});
                     }else{
-                        //check main is type void
+                        //check main is returnType void
                         Function mainFcn = (Function) symbolTable.symbolTable.get("main");
-                       if(!mainFcn.type.equalsIgnoreCase("void")){
-                           throw new InvalidArgumentException(new String[]{"Main must be of type void"});
+                       if(!mainFcn.returnType.equalsIgnoreCase("void")){
+                           throw new InvalidArgumentException(new String[]{"Main must be of returnType void"});
                        }
                         //and has no parameters
                         for(String key : mainFcn.symbolTable.GetKeys()){
@@ -45,9 +45,17 @@ public class SemanticAnalyzer {
                 }
 
                 else if(((String) ast.getPayload()).contains("fun_declaration")){
+                    for( AST child: ast.getChildren()){
+                        Token token = (Token) child.payload;
+                        int type = token.getType();
+                    }
                     Token token = (Token) ast.getPayload();
                     String name = token.getText();
-
+                    Function function = (Function) symbolTable.symbolTable.get(name);
+                    if(!function.returnType.equalsIgnoreCase("void")||
+                            (!function.returnType.equalsIgnoreCase("int"))){
+                        throw new InvalidArgumentException(new String[]{"Function must have return type of int or void"});
+                    }
                 }
             }
             for(AST child: ast.getChildren()){

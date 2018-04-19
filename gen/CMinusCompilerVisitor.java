@@ -7,8 +7,8 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  * This interface defines a complete generic visitor for a parse tree produced
  * by {@link CMinusCompilerParser}.
  *
- * @param <T> The return type of the visit operation. Use {@link Void} for
- * operations with no return type.
+ * @param <T> The return returnType of the visit operation. Use {@link Void} for
+ * operations with no return returnType.
  */
 public interface CMinusCompilerVisitor<T> extends ParseTreeVisitor<T> {
 	/**
