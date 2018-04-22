@@ -1,6 +1,8 @@
 import com.sun.javaws.exceptions.InvalidArgumentException;
+import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.Token;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -43,20 +45,47 @@ public class SemanticAnalyzer {
                         }
                     }
                 }
-
+                //must have return type, an identifier, parameters|void, compound statement
                 else if(((String) ast.getPayload()).contains("fun_declaration")){
-                    for( AST child: ast.getChildren()){
-                        Token token = (Token) child.payload;
-                        int type = token.getType();
-                    }
-                    Token token = (Token) ast.getPayload();
+                    List<AST> children = ast.getChildren();
+                    Token token = (Token) children.get(1).getPayload();
                     String name = token.getText();
                     Function function = (Function) symbolTable.symbolTable.get(name);
-                    if(!function.returnType.equalsIgnoreCase("void")||
-                            (!function.returnType.equalsIgnoreCase("int"))){
+                    symbolTable = function.symbolTable;
+                    if(!(function.returnType.equalsIgnoreCase("void")||
+                            function.returnType.equalsIgnoreCase("int"))){
                         throw new InvalidArgumentException(new String[]{"Function must have return type of int or void"});
                     }
+                    //compound statement
+                    AST lastChild = children.get(children.size()-1);
+                    if(!lastChild.payload.toString().contains("compound_stmt")){
+                        throw new InvalidArgumentException(new String[]{"Function must have a compound statement"});
+                    }
                 }
+                else if(((String) ast.getPayload()).contains("compound_stmt")){
+                    //compound statements may be empty
+                }
+                else if(((String) ast.getPayload()).contains("selection_stmt")){
+                    List<AST> children = ast.getChildren();
+                    Token token = (Token) children.get(0).getPayload();
+                    if(!token.getText().equalsIgnoreCase("if")){
+                        throw new InvalidArgumentException(new String[]{"Selection statement must start with \"if\""});
+                    }
+                    String tokenStr = children.get(1).getPayload().toString();
+                    if(!tokenStr.contains("expression")){
+                        throw new InvalidArgumentException(new String[]{"Selection statement must have an expression"});
+                    }
+                    tokenStr = children.get(2).getPayload().toString();
+                    if(!tokenStr.contains("stmt")){
+                        throw new InvalidArgumentException(new String[]{"Selection statement must have a statement"});
+                    }
+                }
+
+//                else if(((String) ast.getPayload()).contains("return_stmt")){
+//
+//                }
+
+
             }
             for(AST child: ast.getChildren()){
                 CheckNodes(child, symbolTable);

@@ -15,19 +15,19 @@ import java.util.List;
 public class AST {
 
     public Object payload;
-    private final static Hashtable symbolTable = new Hashtable<String, Token>();
+    public final static Hashtable symbolTable = new Hashtable<String, Token>();
     TerminalNode terminalNode;
-    private final List<AST> children;
+    public final List<AST> children;
 
     public AST(ParseTree tree) {
         this(null, tree);
     }
 
-    private AST(AST ast, ParseTree tree) {
+    public AST(AST ast, ParseTree tree) {
         this(ast, tree, new ArrayList<>());
     }
 
-    private AST(AST parent, ParseTree tree, List<AST> children) {
+    public AST(AST parent, ParseTree tree, List<AST> children) {
         this.payload = getPayload(tree);
         this.children = children;
 

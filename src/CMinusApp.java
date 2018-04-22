@@ -98,8 +98,7 @@ public class CMinusApp {
         CMinusCompilerParser cMinusCompilerParser = new CMinusCompilerParser(commonTokenStream);
         ParseTree parseTree = cMinusCompilerParser.program();
 
-//        ASTVisitor astVisitor = new ASTVisitor();
-//        astVisitor.visit(parseTree);
+
         AST ast = new AST(parseTree);
         System.out.println(ast);
 
