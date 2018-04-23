@@ -17,6 +17,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="org.bytedeco.javacpp-presets:llvm:5.0.1-1.4.1" level="project" />
+    <orderEntry type="library" exported="" name="org.bytedeco.javacpp-presets:llvm:5.0.1-1.4.1" level="project" />
+    <orderEntry type="library" exported="" name="org.bytedeco:javacpp:1.4" level="project" />
   </component>
 </module>

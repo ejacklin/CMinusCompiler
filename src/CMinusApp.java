@@ -108,6 +108,8 @@ public class CMinusApp {
         SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer(scopeSymbolTable,ast);
         semanticAnalyzer.CheckNodes(ast, scopeSymbolTable);
 
+        CodeGen codeGen = new CodeGen();
+        codeGen.GenerateCode(ast);
     }
 
 }
