@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="org.bytedeco.javacpp-presets:llvm:3.6.0-0.11" type="repository">
+    <properties maven-id="org.bytedeco.javacpp-presets:llvm:3.6.0-0.11" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/llvm-3.6.0-0.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javacpp-0.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/llvm-3.6.0-0.11-windows-x86_64.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
