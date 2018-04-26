@@ -3,14 +3,20 @@
  */
 
 import org.bytedeco.javacpp.*;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 import static org.bytedeco.javacpp.LLVM.*;
 
 public class CodeGen {
 
+    public static LinkedHashMap<String,Function> functions = new LinkedHashMap<>();
+
     public CodeGen() {
     }
 
-    void GenerateCode(AST ast){
+    void GenerateIRCode(SymbolTable symbolTable){
 
         BytePointer error = new BytePointer((Pointer)null); // Used to retrieve messages from functions
         LLVMLinkInMCJIT();
@@ -22,11 +28,27 @@ public class CodeGen {
 
         LLVMModuleRef module = LLVMModuleCreateWithName("gcd_module");
 
-        LLVMTypeRef[] gcd_args = { LLVMInt32Type(), LLVMInt32Type() };
-        LLVMTypeRef ret_type = LLVMFunctionType(LLVMInt32Type(), gcd_args[0], 2, 0);
-
-        LLVMValueRef gcd = LLVMAddFunction(module, "gcd", ret_type);
 
 
+
+
+    }
+
+    private void AddFunction(Function function, LLVMModuleRef module){
+        String name = function.name;
+        String returnType = function.returnType;
+        HashMap<String, Object> symbolTable = function.symbolTable.symbolTable;
+
+        //deteremine function return type
+        LLVMTypeRef retType;
+        if(returnType.equalsIgnoreCase("int")){
+            retType = LLVMInt32Type();
+        }else{
+            retType = LLVMVoidType();
+        }
+
+        LLVMTypeRef[] args = { LLVMInt32Type(), LLVMInt32Type() };
+        LLVMTypeRef ret_type = LLVMFunctionType(retType, args[0], 2, 0);
+        LLVMValueRef fun = LLVMAddFunction(module, name, ret_type);
     }
 }
