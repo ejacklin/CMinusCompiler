@@ -31,6 +31,17 @@ public class Variable {
         this.param = false;
     }
 
+    public boolean IsParameter(){
+        return this.param;
+    }
+
+    public Integer GetValue(){
+        return this.value;
+    }
+
+    public ArrayList<Integer> GetArrayValue(){
+        return this.aValue;
+    }
 
     @Override
     public String toString() {
