@@ -9,7 +9,6 @@ public class Variable {
     public Integer value;
     public ArrayList<Integer> aValue;
     public Boolean param;
-    public Boolean array;
     public String type;
 
     public Variable(String name, String type, Integer value, Boolean param) {

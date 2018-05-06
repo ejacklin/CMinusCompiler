@@ -109,7 +109,7 @@ public class CMinusApp {
         semanticAnalyzer.CheckNodes(ast, scopeSymbolTable);
 
         CodeGen codeGen = new CodeGen();
-        codeGen.GenerateIRCode(scopeSymbolTable);
+        codeGen.GenerateIRCode(scopeSymbolTable, ast);
     }
 
 }
